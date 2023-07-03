@@ -1,4 +1,5 @@
-#TELECOM COMPANY DASHBOARD
+# TELECOM COMPANY DASHBOARD
+
 A comprehensive telecom company dashboard that offers valuable insights and analytics. It consists various sections showcasing subscriber trends, bandwidth usage, peak hour statistics, and overall insights. The dashboard utilizes React, SCSS, Recharts, and Material-UI for a responsive and visually appealing user interface. Users can easily navigate through the dashboard, select specific date ranges and CSANames, and access detailed analytics on subscriber data, download statistics, bandwidth trends, usage patterns etc. With this dashboard, the telecom company gains actionable insights to optimize network resources, monitor subscriber growth, and make informed decisions based on data-driven analytics.
 
 ## Getting Started with Create React App
