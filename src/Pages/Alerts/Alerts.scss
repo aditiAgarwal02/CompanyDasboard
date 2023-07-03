@@ -1,0 +1,14 @@
+.alerts {
+    display: flex;
+    .Apage {
+      flex: 8;
+      height: 100%;
+      .container {
+        height: 84%;
+        display: flex;
+        flex-direction: column;
+        padding: 2px;
+        margin: 12px;
+      }
+    }
+}

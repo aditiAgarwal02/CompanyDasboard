@@ -1,0 +1,44 @@
+.navbar {
+    height: 9.5%;
+    border-bottom: 0.5px solid lightgray;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #555;
+  
+    .wrapper {
+      width: 100%;
+      margin-top: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+  
+      .left {
+        color: rgb(86, 86, 216);
+        margin-left: 10px;
+      }
+  
+      .right {
+        // align-self: flex-start;
+  
+        select,
+        input {
+          height: 15px;
+          width: 100px;
+          font-size: 12px;
+          font-weight: bold;
+          padding: 1px;
+          border: 2px solid lightgray;
+        }
+        .csa-dropdown{
+            font-size: 12px;
+            margin: 2px;
+            height: 20px;
+            width: 165px;
+            border: 2px solid lightgray;
+        }
+      }
+    }
+  }
+

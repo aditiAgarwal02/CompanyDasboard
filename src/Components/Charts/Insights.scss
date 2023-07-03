@@ -1,0 +1,36 @@
+.insights-table {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 10px;
+  
+    .table-title {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      height: 30%;
+  
+      th, td {
+        font-size: 14px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+  
+      th {
+        background-color: #ec5b4e;
+        color: white;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #fff;
+      }
+  
+      tr:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+    }
+  }
