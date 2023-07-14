@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import jsonFile from "../../dataset/18-08-2021.json";
+import moment from "moment";
 import "./Insights.scss";
 
-const Insights = () => {
+const Insights = ({ endDate }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalUsage, setTotalUsage] = useState(0);
   const [totalSubscribers, setTotalSubscribers] = useState(0);
@@ -12,7 +13,11 @@ const Insights = () => {
   useEffect(() => {
     // Simulating data loading delay
     setTimeout(() => {
-      const data = jsonFile;
+      const data = jsonFile.filter((item) => {
+        const itemDate = moment(item.Date, "DD-MM-YYYY HH:mm");
+        const itemDateFormatted = itemDate.format("YYYY-MM-DD");
+        return moment(itemDateFormatted).isSame(endDate, "month");
+      });
 
       // Calculate total usage
       const usageSum = data.reduce(
@@ -46,7 +51,7 @@ const Insights = () => {
 
       setIsLoading(false);
     }, 1500);
-  }, []);
+  }, [endDate]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -54,7 +59,7 @@ const Insights = () => {
 
   return (
     <div className="insights-table">
-      <h2 className="table-title">Overall Insights on 18 August 2021</h2>
+      <h2 className="table-title">Overall Insights for {moment(endDate).format("MMMM YYYY")}</h2>
       <table>
         <thead>
           <tr>

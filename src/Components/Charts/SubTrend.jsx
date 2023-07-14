@@ -44,11 +44,11 @@ const SubscriberTrend = ({ startDate, endDate }) => {
   return (
     <div>
       <h3 style={{ fontSize: "18px", marginBottom: "15px", marginLeft: "14px" }}>Subscriber Trend</h3>
-      <LineChart width={500} height={300} data={chartData} margin={{ bottom: 50 }}>
+      <LineChart width={500} height={300} data={chartData} margin={{ bottom: 50, right: 15 }}>
         <XAxis
           dataKey="CSA"
-          label={{ value: 'CSA Names', position: 'insideBottom', offset: -10 }}
-          ticks={[chartData[0]?.CSA, chartData[chartData.length - 1]?.CSA]}
+          label={{ value: 'CSA Names', position: 'insideBottom', offset: 10 }}
+          tick={false}
         />
         <YAxis label={{ value: 'Subscribers', angle: -90, position: 'insideLeft', offset: 40, dy: 40  }} tick={false} />
         <Tooltip />

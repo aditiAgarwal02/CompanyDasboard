@@ -26,7 +26,7 @@ const Summary = () => {
         <div className="container">
           <div className="left">
             <div className="top">
-            <Insights style={{padding: "1px 2px"}}/> 
+            <Insights endDate={endDate} style={{padding: "1px 2px"}}/> 
             </div>
             <div className="bottom">
               <div className="widget">
@@ -45,7 +45,7 @@ const Summary = () => {
           <SubTrend startDate={startDate} endDate={endDate} style={{ padding:"10px",height: "40px", width: "200px" }}/>
           </div>
           <div className="bottom">
-          <AvgPH1 startDate={startDate} endDate={endDate} style={{ padding:"10px",height: "40px", width: "200px" }}/>
+          <AvgPH1 startDate={startDate} endDate={endDate} style={{ padding:"10px",height: "40px", width: "200px"}}/>
           </div>
           </div>
         </div>

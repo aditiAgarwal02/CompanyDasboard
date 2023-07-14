@@ -3,7 +3,6 @@ import { LineChart, XAxis, YAxis, Tooltip, Line } from "recharts";
 import moment from "moment";
 import subscriberData from "../../dataset/18-08-2021.json";
 
-
 const AvgPH1 = ({ startDate, endDate }) => {
   const [chartData, setChartData] = useState([]);
 
@@ -25,39 +24,27 @@ const AvgPH1 = ({ startDate, endDate }) => {
 
   return (
     <div>
-      <h3
-        style={{ fontSize: "16px", marginBottom: "15px", marginLeft: "14px" }}
-      >
+      <h3 style={{ fontSize: "16px", marginBottom: "15px", marginLeft: "14px" }}>
         Peak Hour Usage Trend
       </h3>
-      <LineChart
-        width={500}
-        height={300}
-        data={chartData}
-        margin={{ bottom: 50 }}
-      >
+      <LineChart width={500} height={300} data={chartData} margin={{ bottom: 50, right: 20 }}>
         <XAxis
           dataKey="CSA"
-          label={{ value: "CSA Names", position: "insideBottom", offset: -10 }}
-          ticks={[chartData[0]?.CSA, chartData[chartData.length - 1]?.CSA]}
+          label={{ value: "CSA Names", position: "insideBottom", offset: 10 }}
+          tick={false} // Remove ticks
         />
         <YAxis
           label={{
             value: "Peak Hour Usage",
             angle: -90,
-            offset: 40, dy: 40 ,
+            offset: 40,
+            dy: 40,
             position: "insideLeft",
           }}
-          tick={false} 
+          tick={false}
         />
         <Tooltip />
-        <Line
-          type="monotone"
-          dataKey="PeakHourUsage"
-          stroke="#8884d8"
-          strokeWidth={2}
-          dot={false}
-        />
+        <Line type="monotone" dataKey="PeakHourUsage" stroke="#8884d8" strokeWidth={2} dot={false} />
       </LineChart>
     </div>
   );
