@@ -5,49 +5,48 @@ import "./Insights.scss";
 
 const Insights = ({ endDate }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [totalUsage, setTotalUsage] = useState(0);
-  const [totalSubscribers, setTotalSubscribers] = useState(0);
-  const [totalPeakHourUsage, setTotalPeakHourUsage] = useState(0);
-  const [totalCities, setTotalCities] = useState(0);
+  const [totalUsage, setTotalUsage] = useState(null);
+  const [totalSubscribers, setTotalSubscribers] = useState(null);
+  const [totalPeakHourUsage, setTotalPeakHourUsage] = useState(null);
+  const [totalCities, setTotalCities] = useState(null);
 
   useEffect(() => {
-    // Simulating data loading delay
     setTimeout(() => {
-      const data = jsonFile.filter((item) => {
+      const filteredData = jsonFile.filter((item) => {
         const itemDate = moment(item.Date, "DD-MM-YYYY HH:mm");
         const itemDateFormatted = itemDate.format("YYYY-MM-DD");
         return moment(itemDateFormatted).isSame(endDate, "month");
       });
 
-      // Calculate total usage
-      const usageSum = data.reduce(
-        (accumulator, item) =>
-          accumulator + parseFloat(item["Total Usage (GB)"]),
-        0
-      );
-      setTotalUsage(usageSum.toFixed(2));
+      if (filteredData.length > 0) {
+        const usageSum = filteredData.reduce(
+          (accumulator, item) => accumulator + parseFloat(item["Total Usage (GB)"]),
+          0
+        );
+        setTotalUsage(usageSum.toFixed(2));
 
-      // Calculate total subscribers
-      const subscribersSum = data.reduce(
-        (accumulator, item) => {
-          const totalUsers = parseInt(item["Total Users"], 10);
-          return isNaN(totalUsers) ? accumulator : accumulator + totalUsers;
-        },
-        0
-      );
-      setTotalSubscribers(subscribersSum);
+        const subscribersSum = filteredData.reduce(
+          (accumulator, item) => {
+            const totalUsers = parseInt(item["Total Users"], 10);
+            return isNaN(totalUsers) ? accumulator : accumulator + totalUsers;
+          },
+          0
+        );
+        setTotalSubscribers(subscribersSum);
 
-      // Calculate total peak hour usage
-      const peakHourSum = data.reduce(
-        (accumulator, item) =>
-          accumulator + parseFloat(item["Peak Hour - Usage (GB)"]),
-        0
-      );
-      setTotalPeakHourUsage(peakHourSum.toFixed(2));
+        const peakHourSum = filteredData.reduce(
+          (accumulator, item) => accumulator + parseFloat(item["Peak Hour - Usage (GB)"]),
+          0
+        );
+        setTotalPeakHourUsage(peakHourSum.toFixed(2));
 
-      // Calculate total cities
-      const citiesCount = data.length;
-      setTotalCities(citiesCount);
+        setTotalCities(filteredData.length);
+      } else {
+        setTotalUsage(0);
+        setTotalSubscribers(0);
+        setTotalPeakHourUsage(0);
+        setTotalCities(0);
+      }
 
       setIsLoading(false);
     }, 1500);
@@ -70,19 +69,19 @@ const Insights = ({ endDate }) => {
         <tbody>
           <tr>
             <td>Total Usage (GB)</td>
-            <td>{totalUsage}</td>
+            <td>{totalUsage !== null ? totalUsage : "-"}</td>
           </tr>
           <tr>
             <td>Total Subscribers</td>
-            <td>{String(totalSubscribers)}</td>
+            <td>{totalSubscribers !== null ? totalSubscribers : "-"}</td>
           </tr>
           <tr>
             <td>Total Peak Hour Usage (GB)</td>
-            <td>{totalPeakHourUsage}</td>
+            <td>{totalPeakHourUsage !== null ? totalPeakHourUsage : "-"}</td>
           </tr>
           <tr>
             <td>Total Cities</td>
-            <td>{totalCities}</td>
+            <td>{totalCities !== null ? totalCities : "-"}</td>
           </tr>
         </tbody>
       </table>

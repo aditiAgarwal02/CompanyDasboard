@@ -11,7 +11,7 @@ import Insights from "../../Components/Charts/Insights";
 
 const Summary = () => {
   const [startDate, setStartDate] = useState("2021-08-18");
-  const [endDate, setEndDate] = useState("2022-01-01");
+  const [endDate, setEndDate] = useState("2021-12-30");
 
   return (
     <div className="summary">
